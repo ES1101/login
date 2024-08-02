@@ -1,0 +1,109 @@
+.Manage {
+  /* text-align: center; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  && h4 {
+    position: relative;
+    /* right: 3%; */
+  }
+}
+
+.buttonContainer {
+  position: relative;
+  left: 27%;
+  top: 30px;
+  display: flex;
+  width: auto;
+}
+
+.Table {
+  margin-top: 3%;
+  width: 60%;
+  border-collapse: collapse;
+  border: solid 1px #d3d3d3;
+
+  && td {
+    text-align: center;
+    border: solid 1px #d3d3d3;
+    height: 50px;
+  }
+  && th {
+    background-color: #364951;
+    padding: 8px;
+    color: white;
+    border: solid 1px #d3d3d3;
+  }
+}
+
+/* 테이블 헤더 스타일 */
+/* .styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th {
+  padding: 12px 15px;
+  text-align: center; // 수평 가운데 정렬 
+  vertical-align: middle;  // 수직 가운데 정렬 
+} */
+
+/* 테이블 바디 스타일 */
+/* .styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table td {
+  padding: 22px 40px;
+  text-align: center; //수평 가운데 정렬 
+  vertical-align: middle; // 수직 가운데 정렬 
+} */
+
+/* 테이블 행 호버 스타일 */
+/* .styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+} */
+
+/* .styled-table tbody tr:hover {
+  background-color: #f5f5f5;
+} */
+
+/* 버튼 스타일 */
+.updateBt,
+.deleteBt {
+  border: 0;
+  outline: 0;
+  background-color: #8c9392;
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-right: 1%;
+  width: 60px;
+}
+
+.updateBt:hover,
+.deleteBt:hover {
+  background-color: #6f8985;
+  border: 0;
+  outline: 0;
+}
+
+/* 버튼 삭제 스타일 */
+.deleteBt {
+  background-color: #8c9392;
+  border: 0;
+  outline: 0;
+}
+
+.deleteBt:hover {
+  background-color: #766f89;
+  border: 0;
+  outline: 0;
+}

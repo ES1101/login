@@ -1,0 +1,44 @@
+.modal {
+  position: fixed;
+  /* 모달을 고정된 위치에 표시 */
+  /* top: 40%; */
+  /* 세로로 중앙에 위치 */
+  /* left: 50%; */
+  /* 가로로 중앙에 위치 */
+  /* height: 30%; */
+  /* width: 35%; */
+  /* transform: translate(-50%, -50%); */
+  /* 정확한 중앙에 배치되도록 이동 */
+  background-color: white;
+  width: 350px;
+  /* 배경색 */
+  padding: 40px;
+  /* 내부 여백 */
+  box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.3);
+  /* 그림자 효과 */
+  /* z-index: 1000; */
+  /* 다른 요소보다 앞에 위치하도록 설정 */
+  /* border-radius: 8px;  */
+  /* 모서리 둥글게 */
+}
+
+.modal-overlay {
+  /* position: fixed; */
+  /* top: 0; */
+  /* left: 0; */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* background-color: rgba(0, 0, 0, 0.5);  */
+  /* 반투명 검은 배경 */
+  /* z-index: 999;  */
+  /* 모달 뒤에 위치하도록 설정 */
+  && a {
+    display: flex;
+    float: right;
+  }
+}
+
+/* .modal-contents {
+  display: flex;
+  padding: 6%;
+} */
