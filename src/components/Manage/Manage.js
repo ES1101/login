@@ -166,7 +166,7 @@ const Manage = () => {
       .catch((error) => {
         console.error("에러", error);
       });
-  });
+  }, []);
 
   return (
     <div className="Manage">

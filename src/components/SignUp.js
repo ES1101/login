@@ -42,10 +42,21 @@ const SignUp = () => {
     axios
       .get("http://localhost:3001/users")
       .then((response) => {
+        // const users = response.data;
+        // const existingUser = users.find((user) => user.id === userId);
         const users = response.data;
-        const existingUser = users.find((user) => user.id === userId);
-        if (existingUser) {
+        const existingIdUser = users.find((user) => user.id === userId);
+        const existingEmailUser = users.find((user) => user.email === email);
+        const existingPhoneUser = users.find(
+          (user) => user.phone === phoneNumber
+        );
+
+        if (existingIdUser) {
           alert("이미 존재하는 아이디입니다.");
+        } else if (existingEmailUser) {
+          alert("이미 존재하는 이메일입니다.");
+        } else if (existingPhoneUser) {
+          alert("이미 존재하는 전화번호입니다.");
         } else {
           const newUser = {
             id: userId,
@@ -54,6 +65,17 @@ const SignUp = () => {
             email: email,
             phone: phoneNumber,
           };
+
+          // if (existingUser) {
+          //   alert("이미 존재하는 아이디입니다.");
+          // } else {
+          //   const newUser = {
+          //     id: userId,
+          //     pw: password,
+          //     name: name,
+          //     email: email,
+          //     phone: phoneNumber,
+          //   };
 
           axios
             .post("http://localhost:3001/users", newUser)
