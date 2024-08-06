@@ -2,6 +2,19 @@
   text-align: center;
 }
 
+@font-face {
+  font-family: "GowunBatang-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 페이지 전체에 폰트 적용 */
+body {
+  font-family: "GowunBatang-Regular", sans-serif;
+}
+
 @media (prefers-reduced-motion: no-preference) {
 }
 
@@ -10,7 +23,8 @@
 } */
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
+  background-color: #d0f7da;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -30,6 +44,7 @@
   .LoginBt {
     height: 30px;
     font-size: 13px;
+    border: 0;
   }
 
   .SignUpBt {
@@ -44,6 +59,10 @@
     font-size: 13px;
     border: 0;
     margin-top: 7px;
+  }
+  && form {
+    background-color: #62655f;
+    padding: 40px;
   }
 }
 

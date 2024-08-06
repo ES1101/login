@@ -1,3 +1,17 @@
+/* 페이지 전체에 폰트 적용 */
+
+@font-face {
+  font-family: "GowunBatang-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "GowunBatang-Regular", sans-serif;
+}
+
 .Manage {
   /* text-align: center; */
 
@@ -6,6 +20,7 @@
   justify-content: center;
   flex-direction: column;
   && h4 {
+    margin: 100px 0 0 0;
     position: relative;
     /* right: 3%; */
   }
@@ -13,7 +28,7 @@
 
 .buttonContainer {
   position: relative;
-  left: 27%;
+  left: 23%;
   top: 30px;
   display: flex;
   width: auto;
@@ -112,4 +127,13 @@
 .pagination {
   margin-top: 10px;
   padding: 5px;
+
+  && button {
+    height: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    line-height: 10px;
+    width: 20px;
+  }
 }

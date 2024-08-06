@@ -1,43 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- IONICONS -->
+<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+<!-- JS -->
+<script src="../src/components/Sidebars/main.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../src/components/Sidebars/styles.css" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>로그인 페이지</title>
+    <title>로그인페이지</title>
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+      <div id="root">
+  <body id="body-pd">
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+      <div class="l-navbar" id="navbar">
+        <nav class="nav">
+          <div>
+            <div class="nav__brand">
+              <ion-icon
+                name="menu-outline"
+                class="nav__toggle"
+                id="nav-toggle"
+              ></ion-icon>
+              <a href="/login" class="nav__logo">Bedimcode</a>
+            </div>
+            <div class="nav__list">
+              <a href="#" class="nav__link active">
+                <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                <span class="nav_name">Dashboard</span>
+              </a>
+              <a href="#" class="nav__link">
+                <ion-icon
+                  name="chatbubbles-outline"
+                  class="nav__icon"
+                ></ion-icon>
+                <span class="nav_name">Messenger</span>
+              </a>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+              <div href="#" class="nav__link collapse">
+                <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
+                <span class="nav_name">Projects</span>
+
+                <ion-icon
+                  name="chevron-down-outline"
+                  class="collapse__link"
+                ></ion-icon>
+
+                <ul class="collapse__menu">
+                  <a href="#" class="collapse__sublink">Data</a>
+                  <a href="#" class="collapse__sublink">Group</a>
+                  <a href="#" class="collapse__sublink">Members</a>
+                </ul>
+              </div>
+
+              <a href="#" class="nav__link">
+                <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                <span class="nav_name">Analytics</span>
+              </a>
+
+              <div href="#" class="nav__link collapse">
+                <ion-icon name="people-outline" class="nav__icon"></ion-icon>
+                <span class="nav_name">Team</span>
+
+                <ion-icon
+                  name="chevron-down-outline"
+                  class="collapse__link"
+                ></ion-icon>
+
+                <ul class="collapse__menu">
+                  <a href="#" class="collapse__sublink">Data</a>
+                  <a href="#" class="collapse__sublink">Group</a>
+                  <a href="#" class="collapse__sublink">Members</a>
+                </ul>
+              </div>
+
+              <a href="#" class="nav__link">
+                <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                <span class="nav_name">Settings</span>
+              </a>
+            </div>
+            <a href="#" class="nav__link">
+              <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+              <span class="nav_name">Log out</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+
+      <!-- IONICONS -->
+      <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+      <!-- JS -->
+      <script src="../src/components/Sidebars/main.js"></script>
+    </div>
+    </div>
   </body>
 </html>

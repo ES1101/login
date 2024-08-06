@@ -1,47 +1,138 @@
-import React from "react";
-import { Nav, NavDropdown } from "react-bootstrap";
-import "./sidebars.css";
+import React, { useEffect } from "react";
+import "./styles.css";
 
-function Sidebars() {
+const Sidebar = () => {
+  useEffect(() => {
+    /* EXPANDER MENU */
+    const showMenu = (toggleId, navbarId, bodyId) => {
+      const toggle = document.getElementById(toggleId),
+        navbar = document.getElementById(navbarId),
+        bodypadding = document.getElementById(bodyId);
+
+      if (toggle && navbar) {
+        toggle.addEventListener("click", () => {
+          navbar.classList.toggle("expander");
+          bodypadding.classList.toggle("body-pd");
+        });
+      }
+    };
+
+    showMenu("nav-toggle", "navbar", "body-pd");
+
+    /* LINK ACTIVE */
+    const linkColor = document.querySelectorAll(".nav__link");
+    function colorLink() {
+      linkColor.forEach((l) => l.classList.remove("active"));
+      this.classList.add("active");
+    }
+    linkColor.forEach((l) => l.addEventListener("click", colorLink));
+
+    /* COLLAPSE MENU */
+    const linkCollapse = document.getElementsByClassName("collapse__link");
+    for (let i = 0; i < linkCollapse.length; i++) {
+      linkCollapse[i].addEventListener("click", function () {
+        const collapseMenu = this.nextElementSibling;
+        collapseMenu.classList.toggle("showCollapse");
+
+        const rotate = collapseMenu.previousElementSibling;
+        rotate.classList.toggle("rotate");
+      });
+    }
+  }, []); // 빈 배열은 이 효과가 컴포넌트가 마운트될 때 한 번만 실행되도록 함
+
   return (
-    <div className="sidebar flex-shrink-0 p-3">
-      <a
-        href="/"
-        className="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom"
-      >
-        <svg className="bi pe-none me-2" width="30" height="24">
-          <use href="#bootstrap"></use>
-        </svg>
-        <span className="fs-5 fw-semibold">Collapsible</span>
-      </a>
-      <Nav className="flex-column">
-        <NavDropdown title="Home" id="home-collapse">
-          <NavDropdown.Item href="#">Overview</NavDropdown.Item>
-          <NavDropdown.Item href="#">Updates</NavDropdown.Item>
-          <NavDropdown.Item href="#">Reports</NavDropdown.Item>
-        </NavDropdown>
-        <NavDropdown title="Dashboard" id="dashboard-collapse">
-          <NavDropdown.Item href="#">Overview</NavDropdown.Item>
-          <NavDropdown.Item href="#">Weekly</NavDropdown.Item>
-          <NavDropdown.Item href="#">Monthly</NavDropdown.Item>
-          <NavDropdown.Item href="#">Annually</NavDropdown.Item>
-        </NavDropdown>
-        <NavDropdown title="Orders" id="orders-collapse">
-          <NavDropdown.Item href="#">New</NavDropdown.Item>
-          <NavDropdown.Item href="#">Processed</NavDropdown.Item>
-          <NavDropdown.Item href="#">Shipped</NavDropdown.Item>
-          <NavDropdown.Item href="#">Returned</NavDropdown.Item>
-        </NavDropdown>
-        <NavDropdown.Divider />
-        <NavDropdown title="Account" id="account-collapse">
-          <NavDropdown.Item href="#">New...</NavDropdown.Item>
-          <NavDropdown.Item href="#">Profile</NavDropdown.Item>
-          <NavDropdown.Item href="#">Settings</NavDropdown.Item>
-          <NavDropdown.Item href="#">Sign out</NavDropdown.Item>
-        </NavDropdown>
-      </Nav>
-    </div>
-  );
-}
+    // <div></div>
+    <body id="body-pd">
+      <div class="l-navbar" id="navbar">
+        <nav class="nav">
+          <div>
+            <div class="nav__brand">
+              <ion-icon
+                name="menu-outline"
+                class="nav__toggle"
+                id="nav-toggle"
+              ></ion-icon>
 
-export default Sidebars;
+              <a href="#" style={{ fontSize: "15px" }} class="nav__logo">
+                <ion-icon name="happy-outline"></ion-icon> 안녕하세요
+              </a>
+            </div>
+            <div class="nav__list">
+              <a href="#" class="nav__link active">
+                <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                <span class="nav_name">Dashboard</span>
+              </a>
+              <a href="#" class="nav__link">
+                <ion-icon
+                  name="chatbubbles-outline"
+                  class="nav__icon"
+                ></ion-icon>
+                <span class="nav_name">Messenger</span>
+              </a>
+
+              <div href="#" class="nav__link collapse">
+                <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
+                <span class="nav_name">Projects</span>
+
+                <ion-icon
+                  name="chevron-down-outline"
+                  class="collapse__link"
+                ></ion-icon>
+
+                <ul class="collapse__menu">
+                  <a href="#" class="collapse__sublink">
+                    Data
+                  </a>
+                  <a href="#" class="collapse__sublink">
+                    Group
+                  </a>
+                  <a href="#" class="collapse__sublink">
+                    Members
+                  </a>
+                </ul>
+              </div>
+
+              <a href="#" class="nav__link">
+                <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                <span class="nav_name">Analytics</span>
+              </a>
+
+              <div href="#" class="nav__link collapse">
+                <ion-icon name="people-outline" class="nav__icon"></ion-icon>
+                <span class="nav_name">Team</span>
+
+                <ion-icon
+                  name="chevron-down-outline"
+                  class="collapse__link"
+                ></ion-icon>
+
+                <ul class="collapse__menu">
+                  <a href="#" class="collapse__sublink">
+                    Data
+                  </a>
+                  <a href="#" class="collapse__sublink">
+                    Group
+                  </a>
+                  <a href="#" class="collapse__sublink">
+                    Members
+                  </a>
+                </ul>
+              </div>
+
+              <a href="#" class="nav__link">
+                <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                <span class="nav_name">Settings</span>
+              </a>
+            </div>
+            <a href="#" class="nav__link">
+              <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+              <span class="nav_name">Log out</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </body>
+  );
+};
+
+export default Sidebar;

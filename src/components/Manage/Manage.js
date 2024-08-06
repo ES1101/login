@@ -13,14 +13,20 @@ const Manage = () => {
   const [checkItems, setCheckItems] = useState([]); // checkItems 체크된 사용자의 ID목록을 관리하는 상태 변수
 
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 번호를 관리하는 상태 변수
-  const [itemsPerPage] = useState(10); // 페이지당 항목 수를 관리하는 상태 변수
+  const [itemsPerPage, setItemsPerPage] = useState(10); // 페이지당 항목 수를 관리하는 상태 변수
 
   const toggleModal = () => {
     setIsModal(!isModal);
   };
 
   const handleEdit = () => {
+    // 선택 된 사용자가 있는지 확인
+    // if (checkItems.length === 0) {
+    //   alert("사용자를 선택해주세요.");
+    //   return;
+    // }
     const selectedUser = userList.find((user) => checkItems.includes(user.id));
+    console.log("Selected User:", selectedUser);
     if (selectedUser) {
       setUserToEdit(selectedUser);
       setOriginalId(selectedUser.id);
@@ -90,6 +96,15 @@ const Manage = () => {
     for (let i = 1; i <= totalPages; i++) {
       pages.push(
         <button
+          style={{
+            backgroundColor: currentPage === i ? "none" : "lightgray",
+            color: currentPage === i ? "white" : "black",
+            padding: "6px",
+            margin: "0 7px",
+            borderRadius: "5px",
+            border: "none",
+            cursor: "pointer",
+          }}
           key={i}
           onClick={() => handlePageChange(i)}
           className={currentPage === i ? "active" : ""}
@@ -152,6 +167,11 @@ const Manage = () => {
     }
   };
 
+  const handleItemsPerPageChange = (e) => {
+    setItemsPerPage(parseInt(e.target.value, 10));
+    setCurrentPage(1); // 페이지 수가 변경될 때 페이지를 첫 페이지로 초기화
+  };
+
   useEffect(() => {
     axios
       .get("http://localhost:3001/users")
@@ -179,7 +199,20 @@ const Manage = () => {
         <button className="deleteBt" onClick={() => handleDelete()}>
           삭제
         </button>
+
+        {/* 드롭다운 메뉴 추가 */}
+        <select
+          className="dropdown"
+          onChange={handleItemsPerPageChange}
+          value={itemsPerPage}
+          style={{ marginLeft: "20px", padding: "5px" }}
+        >
+          <option value={10}>10개씩 보기</option>
+          <option value={20}>20개씩 보기</option>
+          <option value={30}>30개씩 보기</option>
+        </select>
       </div>
+
       {currentItems.length > 0 ? (
         <table className="Table">
           <thead>
@@ -249,6 +282,7 @@ const Manage = () => {
       {/* 페이지네이션 버튼 렌더링 */}
       <div className="pagination">
         <button
+          className="prevBtn"
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
