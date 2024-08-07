@@ -297,88 +297,115 @@ const Manage = () => {
 
       {isModal && (
         <Modal onClose={toggleModal}>
-          <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-            <label>
-              ID:
+          <form onSubmit={handleSubmit}  style={{ width: "100%" }}
+          >
+               <div style={{ display: "flex", alignItems: "center", marginBottom: "10px", marginLeft: "5%" }}>
+            <label style={{ marginRight: "1%" }}>
+              ID:  </label>
               <input
                 type="text"
                 style={{
                   backgroundColor: "white",
                   margin: "0 1% 2% 3%",
-                  width: "100px",
+                  width: "200px",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                  height: "40px"
                 }}
                 value={userToEdit?.id || ""}
                 onChange={(e) =>
                   setUserToEdit({ ...userToEdit, id: e.target.value })
                 }
               />
-            </label>
+              </div>
+           
             <br />
+            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px", marginLeft: "5%" }}>
             <label>
-              Password:
+              Password:  </label>
               <input
                 type="password"
                 style={{
                   backgroundColor: "white",
                   margin: "0 1% 2% 3%",
-                  width: "100px",
+                  width: "200px",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                  height: "40px"
                 }}
                 value={userToEdit?.pw || ""}
                 onChange={(e) =>
                   setUserToEdit({ ...userToEdit, pw: e.target.value })
                 }
               />
-            </label>
+              </div>
+           
             <br />
+            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px", marginLeft: "5%" }}>
             <label>
-              Name:
+              Name:  </label>
               <input
                 type="text"
                 style={{
                   backgroundColor: "white",
                   margin: "0 1% 2% 3%",
-                  width: "100px",
+                  width: "200px",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                  height: "40px"
                 }}
                 value={userToEdit?.name || ""}
                 onChange={(e) =>
                   setUserToEdit({ ...userToEdit, id: e.target.value })
                 }
               />
-            </label>
+              </div>
+           
             <br />
+            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px", marginLeft: "5%" }}>
             <label>
-              Email:
+              Email:  </label>
               <input
                 type="text"
                 style={{
                   backgroundColor: "white",
                   margin: "0 1% 2% 3%",
-                  width: "150px",
+                  width: "200px",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                  height: "40px"
                 }}
                 value={userToEdit?.email || ""}
                 onChange={(e) =>
                   setUserToEdit({ ...userToEdit, id: e.target.value })
                 }
               />
-            </label>
+              </div>
+           
             <br />
-            <label>
-              Phone:
+            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px", marginLeft: "5%" }}>
+            <label style={{ marginRight: "1%" }}>
+              Phone: </label>
               <input
                 type="text"
                 style={{
                   backgroundColor: "white",
                   margin: "0 1% 2% 3%",
-                  width: "150px",
+                  width: "200px",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                  height: "40px"
                 }}
                 value={userToEdit?.phone || ""}
                 onChange={(e) =>
                   setUserToEdit({ ...userToEdit, id: e.target.value })
                 }
               />
-            </label>
+            </div>
             <br />
-            <button type="submit">확인</button>
+            <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+            <button type="submit" style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>확인</button>
+            </div>
           </form>
         </Modal>
       )}

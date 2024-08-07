@@ -1,54 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { Link,  useLocation } from "react-router-dom";
 import "./styles.css";
-import { Link, useNavigate, useLocation } from "react-router-dom";
 
-const Sidebar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
+const Sidebar = ({ user, onLogout }) => {
   const location = useLocation();
-
-  useEffect(() => {
-    /* EXPANDER MENU */
-    const showMenu = (toggleId, navbarId, bodyId) => {
-      const toggle = document.getElementById(toggleId),
-        navbar = document.getElementById(navbarId),
-        bodypadding = document.getElementById(bodyId);
-
-      if (toggle && navbar) {
-        toggle.addEventListener("click", () => {
-          navbar.classList.toggle("expander");
-          bodypadding.classList.toggle("body-pd");
-        });
-      }
-    };
-
-    showMenu("nav-toggle", "navbar", "body-pd");
-
-    /* COLLAPSE MENU */
-    const linkCollapse = document.getElementsByClassName("collapse__link");
-    for (let i = 0; i < linkCollapse.length; i++) {
-      linkCollapse[i].addEventListener("click", function () {
-        const collapseMenu = this.nextElementSibling;
-        collapseMenu.classList.toggle("showCollapse");
-
-        const rotate = collapseMenu.previousElementSibling;
-        rotate.classList.toggle("rotate");
-      });
-    }
-
-    // 로그인 상태를 확인하는 로직
-    const checkLoginStatus = () => {
-      const loggedIn = localStorage.getItem("isLoggedIn") === "true";
-      setIsLoggedIn(loggedIn);
-    };
-    checkLoginStatus();
-  }, []); // 빈 배열은 이 효과가 컴포넌트가 마운트될 때 한 번만 실행되도록 함
-
-  const handleLogout = () => {
-    localStorage.setItem("isLoggedIn", "false");
-    setIsLoggedIn(false);
-    navigate("/login");
-  };
 
   useEffect(() => {
     const linkColor = document.querySelectorAll(".nav__link");
@@ -73,9 +28,9 @@ const Sidebar = () => {
                 id="nav-toggle"
               ></ion-icon>
 
-              {isLoggedIn ? (
+              {user ? (
                 <Link to="/" style={{ fontSize: "15px" }} className="nav__logo">
-                  <ion-icon name="happy-outline" /> 안녕하세요
+                  <ion-icon name="happy-outline" /> {user.name}님 안녕하세요
                 </Link>
               ) : (
                 <Link
@@ -110,7 +65,7 @@ const Sidebar = () => {
                 <span className="nav_name">My page</span>
               </Link>
 
-              {isLoggedIn && (
+              {user && user.id === "admin" && (
                 <Link
                   to="/manage"
                   className={`nav__link ${
@@ -125,9 +80,9 @@ const Sidebar = () => {
                 </Link>
               )}
             </div>
-            {isLoggedIn ? (
+            {user ? (
               <div
-                onClick={handleLogout}
+                onClick={onLogout}
                 className="nav__link"
                 style={{ cursor: "pointer" }}
               >

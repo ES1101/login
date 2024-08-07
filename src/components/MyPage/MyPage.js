@@ -1,20 +1,18 @@
 import React from "react";
 import "./MyPage.css";
-import { useLocation } from "react-router-dom";
 
-const MyPage = () => {
-  const location = useLocation();
-  const { user } = location.state || {}; // location.state가 없을 경우 대비
+const MyPage = ({ user }) => {
   return (
     <div className="MyPage">
-      <div>
+      <div className="PageDiv">
         {user ? (
           <h1>{user.name}님 환영합니다</h1>
         ) : (
-          <h1>로그인된 사용자가 없습니다.</h1>
+          <a>먼저 로그인을 해주세요.</a>
         )}
       </div>
     </div>
   );
 };
+
 export default MyPage;
