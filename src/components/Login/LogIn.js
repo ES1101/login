@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LogIn.css";
 import axios from "axios";
-
 import data from "../../data/db.json";
 // *** axios.get("");
 
@@ -49,6 +48,7 @@ function Login() {
       if (user) {
         console.log("사용자 정보:", user);
         alert("로그인 성공");
+        localStorage.setItem("isLoggedIn", "true");
         navigate("/mypage", { state: { user } });
       } else {
         console.log("사용자를 찾을 수 없습니다.");
@@ -62,9 +62,9 @@ function Login() {
   const goToSignUp = () => {
     navigate("/SignUp"); // /signup 경로로 페이지 전환
   };
-  const goToManage = () => {
-    navigate("/Manage");
-  };
+  // const goToManage = () => {
+  //   navigate("/Manage");
+  // };
 
   return (
     <div className="App">
@@ -79,15 +79,17 @@ function Login() {
           <label className="Pw">Password</label>
           <input type="password" value={inputPw} onChange={handleInputPw} />
           <br />
+
           <button className="LoginBt" onClick={onClickLogin} formAction="">
             Login
           </button>
           <button className="SignUpBt" onClick={goToSignUp} formAction="">
             회원가입
           </button>
-          <button className="ManageBt" onClick={goToManage} formAction="">
+
+          {/* <button className="ManageBt" onClick={goToManage} formAction="">
             회원관리(임시버튼)
-          </button>
+          </button> */}
         </form>
       </header>
     </div>

@@ -1,0 +1,25 @@
+.image-container {
+  width: 650px;
+  height: 850px;
+  /* background-color: white; */
+}
+
+.mainCho {
+  width: 600px;
+  height: 750px;
+  /* justify-content: center; */
+  text-align: center;
+  margin: 130px 0 0 700px;
+  box-shadow: 15px 15px 35px #2c4831;
+}
+
+.Main {
+  height: 100vh; /* 화면 높이 전체를 차지하게 설정 */
+  background: linear-gradient(
+    to right,
+    #edf7e2 50%,
+    #edf7e2 50%,
+    white 56%,
+    white 93%
+  );
+}

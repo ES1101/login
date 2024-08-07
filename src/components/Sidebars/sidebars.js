@@ -1,7 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   useEffect(() => {
     /* EXPANDER MENU */
     const showMenu = (toggleId, navbarId, bodyId) => {
@@ -19,14 +24,6 @@ const Sidebar = () => {
 
     showMenu("nav-toggle", "navbar", "body-pd");
 
-    /* LINK ACTIVE */
-    const linkColor = document.querySelectorAll(".nav__link");
-    function colorLink() {
-      linkColor.forEach((l) => l.classList.remove("active"));
-      this.classList.add("active");
-    }
-    linkColor.forEach((l) => l.addEventListener("click", colorLink));
-
     /* COLLAPSE MENU */
     const linkCollapse = document.getElementsByClassName("collapse__link");
     for (let i = 0; i < linkCollapse.length; i++) {
@@ -38,100 +35,121 @@ const Sidebar = () => {
         rotate.classList.toggle("rotate");
       });
     }
+
+    // 로그인 상태를 확인하는 로직
+    const checkLoginStatus = () => {
+      const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+      setIsLoggedIn(loggedIn);
+    };
+    checkLoginStatus();
   }, []); // 빈 배열은 이 효과가 컴포넌트가 마운트될 때 한 번만 실행되도록 함
 
+  const handleLogout = () => {
+    localStorage.setItem("isLoggedIn", "false");
+    setIsLoggedIn(false);
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    const linkColor = document.querySelectorAll(".nav__link");
+    linkColor.forEach((link) => {
+      if (link.getAttribute("href") === location.pathname) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  }, [location.pathname]);
+
   return (
-    // <div></div>
-    <body id="body-pd">
-      <div class="l-navbar" id="navbar">
-        <nav class="nav">
+    <div id="body-pd">
+      <div className="l-navbar" id="navbar">
+        <nav className="nav">
           <div>
-            <div class="nav__brand">
+            <div className="nav__brand">
               <ion-icon
                 name="menu-outline"
-                class="nav__toggle"
+                className="nav__toggle"
                 id="nav-toggle"
               ></ion-icon>
 
-              <a href="#" style={{ fontSize: "15px" }} class="nav__logo">
-                <ion-icon name="happy-outline"></ion-icon> 안녕하세요
-              </a>
+              {isLoggedIn ? (
+                <Link to="/" style={{ fontSize: "15px" }} className="nav__logo">
+                  <ion-icon name="happy-outline" /> 안녕하세요
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  style={{ fontSize: "15px" }}
+                  className="nav__logo"
+                >
+                  <ion-icon name="happy-outline" /> 로그인해주세요
+                </Link>
+              )}
             </div>
-            <div class="nav__list">
-              <a href="#" class="nav__link active">
-                <ion-icon name="home-outline" class="nav__icon"></ion-icon>
-                <span class="nav_name">Dashboard</span>
-              </a>
-              <a href="#" class="nav__link">
+            <div className="nav__list">
+              <Link
+                to="/"
+                className={`nav__link ${
+                  location.pathname === "/" ? "active" : ""
+                }`}
+              >
+                <ion-icon name="home-outline" className="nav__icon"></ion-icon>
+                <span className="nav_name">Home</span>
+              </Link>
+              <Link
+                to="/mypage"
+                className={`nav__link ${
+                  location.pathname === "/mypage" ? "active" : ""
+                }`}
+              >
                 <ion-icon
                   name="chatbubbles-outline"
-                  class="nav__icon"
+                  className="nav__icon"
                 ></ion-icon>
-                <span class="nav_name">Messenger</span>
-              </a>
+                <span className="nav_name">My page</span>
+              </Link>
 
-              <div href="#" class="nav__link collapse">
-                <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
-                <span class="nav_name">Projects</span>
-
-                <ion-icon
-                  name="chevron-down-outline"
-                  class="collapse__link"
-                ></ion-icon>
-
-                <ul class="collapse__menu">
-                  <a href="#" class="collapse__sublink">
-                    Data
-                  </a>
-                  <a href="#" class="collapse__sublink">
-                    Group
-                  </a>
-                  <a href="#" class="collapse__sublink">
-                    Members
-                  </a>
-                </ul>
-              </div>
-
-              <a href="#" class="nav__link">
-                <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
-                <span class="nav_name">Analytics</span>
-              </a>
-
-              <div href="#" class="nav__link collapse">
-                <ion-icon name="people-outline" class="nav__icon"></ion-icon>
-                <span class="nav_name">Team</span>
-
-                <ion-icon
-                  name="chevron-down-outline"
-                  class="collapse__link"
-                ></ion-icon>
-
-                <ul class="collapse__menu">
-                  <a href="#" class="collapse__sublink">
-                    Data
-                  </a>
-                  <a href="#" class="collapse__sublink">
-                    Group
-                  </a>
-                  <a href="#" class="collapse__sublink">
-                    Members
-                  </a>
-                </ul>
-              </div>
-
-              <a href="#" class="nav__link">
-                <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                <span class="nav_name">Settings</span>
-              </a>
+              {isLoggedIn && (
+                <Link
+                  to="/manage"
+                  className={`nav__link ${
+                    location.pathname === "/manage" ? "active" : ""
+                  }`}
+                >
+                  <ion-icon
+                    name="settings-outline"
+                    className="nav__icon"
+                  ></ion-icon>
+                  <span className="nav_name">Manage</span>
+                </Link>
+              )}
             </div>
-            <a href="#" class="nav__link">
-              <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
-              <span class="nav_name">Log out</span>
-            </a>
+            {isLoggedIn ? (
+              <div
+                onClick={handleLogout}
+                className="nav__link"
+                style={{ cursor: "pointer" }}
+              >
+                <ion-icon
+                  name="log-out-outline"
+                  className="nav__icon"
+                ></ion-icon>
+                <span className="nav_name">Log out</span>
+              </div>
+            ) : (
+              <Link to="/login" className="nav__link">
+                <ion-icon
+                  name="log-in-outline"
+                  className="nav__icon"
+                ></ion-icon>
+                <span className="nav_name">Log in</span>
+              </Link>
+            )}
           </div>
         </nav>
       </div>
-    </body>
+    </div>
   );
 };
 

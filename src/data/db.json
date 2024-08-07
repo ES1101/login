@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": "cccc",
-      "pw": "3333",
-      "name": "jeon",
-      "email": "jeon@qdmail.com",
-      "phone": "000-0000-0002"
-    },
-    {
       "id": "dddd",
       "pw": "4444",
       "name": "seo",
@@ -209,6 +202,20 @@
       "name": "veon",
       "email": "veon@qdmail.com",
       "phone": "000-0000-0015"
+    },
+    {
+      "id": "cccc';'",
+      "pw": "3333",
+      "name": "jeon",
+      "email": "jeon@qdmail.com",
+      "phone": "000-0000-0002"
+    },
+    {
+      "id": "admin",
+      "pw": "1234",
+      "name": "admin",
+      "email": "admin@qdmail.com",
+      "phone": "00011110001"
     }
   ]
 }

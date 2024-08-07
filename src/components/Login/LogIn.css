@@ -43,13 +43,14 @@ body {
 
   .LoginBt {
     height: 30px;
-    font-size: 13px;
+    font-size: 15px;
     border: 0;
+    margin-top: 20px;
   }
 
   .SignUpBt {
     height: 30px;
-    font-size: 13px;
+    font-size: 15px;
     background: burlywood;
     border: 0;
     margin-top: 7px;
@@ -60,9 +61,12 @@ body {
     border: 0;
     margin-top: 7px;
   }
+
   && form {
     background-color: #62655f;
-    padding: 40px;
+    padding: 85px;
+    width: 380px;
+    box-shadow: 10px 10px 25px #232924;
   }
 }
 

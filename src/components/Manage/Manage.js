@@ -37,28 +37,26 @@ const Manage = () => {
   };
   // 체크된 사용자 중 첫 번째 사용자를 찾아 'userToEdit'와 'originalId'에 저장하고, 모달을
 
-  const handleDelete = () => {
-    setOriginalId("1234");
-    setOriginalId(12345);
-
+  const handleDelete = async () => {
     const selectedUsers = userList.filter((user) =>
       checkItems.includes(user.id)
     );
     if (selectedUsers.length > 0) {
-      selectedUsers.forEach((user) => {
-        axios
-          .delete(`http://localhost:3001/users/${user.id}`)
-          .then(() => {
-            alert("사용자 정보가 삭제되었습니다.");
-            setUserList((prevUserList) =>
-              prevUserList.filter((u) => user.id !== u.id)
-            );
-          })
-          .catch((error) => {
-            alert("삭제 실패");
-            console.error("삭제 실패", error);
-          });
-      });
+      try {
+        await Promise.all(
+          selectedUsers.map((user) =>
+            axios.delete(`http://localhost:3001/users/${user.id}`)
+          )
+        );
+        setUserList((prevUserList) =>
+          prevUserList.filter((user) => !checkItems.includes(user.id))
+        );
+        alert(`${selectedUsers.length}개의 데이터가 삭제되었습니다.`);
+        setCheckItems([]);
+      } catch (error) {
+        alert("삭제 실패");
+        console.error("삭제 실패", error);
+      }
     } else {
       alert("선택을 해주세요");
     }
