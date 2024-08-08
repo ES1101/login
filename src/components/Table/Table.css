@@ -1,0 +1,20 @@
+.Table {
+    margin-top: 3%;
+    width: 60%;
+    border-collapse: collapse;
+    border: solid 1px #d3d3d3;
+  }
+  
+  .Table td {
+    text-align: center;
+    border: solid 1px #d3d3d3;
+    height: 50px;
+  }
+  
+  .Table th {
+    text-align: center;
+    background-color: #364951;
+    padding: 8px;
+    color: white;
+    border: solid 1px #d3d3d3;
+  }
