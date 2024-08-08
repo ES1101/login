@@ -35,8 +35,9 @@ const Manage = () => {
       alert("선택을 해주세요");
     }
   };
-  // 체크된 사용자 중 첫 번째 사용자를 찾아 'userToEdit'와 'originalId'에 저장하고, 모달을
+  // 체크된 사용자 중 첫 번째 사용자를 찾아 userToEdit과 originalId에 저장하고, 모달을
 
+  // 사용자가 삭제 버튼 클릭 시 호출되는 함수
   const handleDelete = async () => {
     const selectedUsers = userList.filter((user) =>
       checkItems.includes(user.id)
@@ -48,11 +49,12 @@ const Manage = () => {
             axios.delete(`http://localhost:3001/users/${user.id}`)
           )
         );
+        // 삭제 후 사용자 목록 갱신
         setUserList((prevUserList) =>
           prevUserList.filter((user) => !checkItems.includes(user.id))
         );
         alert(`${selectedUsers.length}개의 데이터가 삭제되었습니다.`);
-        setCheckItems([]);
+        setCheckItems([]); // 체크된 항목 초기화
       } catch (error) {
         alert("삭제 실패");
         console.error("삭제 실패", error);
@@ -79,12 +81,12 @@ const Manage = () => {
 
   // 총 페이지 수 계산
   const totalPages = Math.ceil(userList.length / itemsPerPage);
-  // 현재 페이지에 해당하는 데이터만 slice
+  // 현재 페이지에 해당하는 데이터만 가져오기
   const currentItems = userList.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
+  // 페이지 번호 변경
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -297,11 +299,16 @@ const Manage = () => {
 
       {isModal && (
         <Modal onClose={toggleModal}>
-          <form onSubmit={handleSubmit}  style={{ width: "100%" }}
-          >
-               <div style={{ display: "flex", alignItems: "center", marginBottom: "10px", marginLeft: "5%" }}>
-            <label style={{ marginRight: "1%" }}>
-              ID:  </label>
+          <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "10px",
+                marginLeft: "5%",
+              }}
+            >
+              <label style={{ marginRight: "1%" }}>ID: </label>
               <input
                 type="text"
                 style={{
@@ -310,19 +317,25 @@ const Manage = () => {
                   width: "200px",
                   border: "1px solid #ccc",
                   borderRadius: "4px",
-                  height: "40px"
+                  height: "40px",
                 }}
                 value={userToEdit?.id || ""}
                 onChange={(e) =>
                   setUserToEdit({ ...userToEdit, id: e.target.value })
                 }
               />
-              </div>
-           
+            </div>
+
             <br />
-            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px", marginLeft: "5%" }}>
-            <label>
-              Password:  </label>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "10px",
+                marginLeft: "5%",
+              }}
+            >
+              <label>Password: </label>
               <input
                 type="password"
                 style={{
@@ -331,19 +344,25 @@ const Manage = () => {
                   width: "200px",
                   border: "1px solid #ccc",
                   borderRadius: "4px",
-                  height: "40px"
+                  height: "40px",
                 }}
                 value={userToEdit?.pw || ""}
                 onChange={(e) =>
                   setUserToEdit({ ...userToEdit, pw: e.target.value })
                 }
               />
-              </div>
-           
+            </div>
+
             <br />
-            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px", marginLeft: "5%" }}>
-            <label>
-              Name:  </label>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "10px",
+                marginLeft: "5%",
+              }}
+            >
+              <label>Name: </label>
               <input
                 type="text"
                 style={{
@@ -352,19 +371,25 @@ const Manage = () => {
                   width: "200px",
                   border: "1px solid #ccc",
                   borderRadius: "4px",
-                  height: "40px"
+                  height: "40px",
                 }}
                 value={userToEdit?.name || ""}
                 onChange={(e) =>
                   setUserToEdit({ ...userToEdit, id: e.target.value })
                 }
               />
-              </div>
-           
+            </div>
+
             <br />
-            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px", marginLeft: "5%" }}>
-            <label>
-              Email:  </label>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "10px",
+                marginLeft: "5%",
+              }}
+            >
+              <label>Email: </label>
               <input
                 type="text"
                 style={{
@@ -373,19 +398,25 @@ const Manage = () => {
                   width: "200px",
                   border: "1px solid #ccc",
                   borderRadius: "4px",
-                  height: "40px"
+                  height: "40px",
                 }}
                 value={userToEdit?.email || ""}
                 onChange={(e) =>
                   setUserToEdit({ ...userToEdit, id: e.target.value })
                 }
               />
-              </div>
-           
+            </div>
+
             <br />
-            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px", marginLeft: "5%" }}>
-            <label style={{ marginRight: "1%" }}>
-              Phone: </label>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "10px",
+                marginLeft: "5%",
+              }}
+            >
+              <label style={{ marginRight: "1%" }}>Phone: </label>
               <input
                 type="text"
                 style={{
@@ -394,7 +425,7 @@ const Manage = () => {
                   width: "200px",
                   border: "1px solid #ccc",
                   borderRadius: "4px",
-                  height: "40px"
+                  height: "40px",
                 }}
                 value={userToEdit?.phone || ""}
                 onChange={(e) =>
@@ -403,8 +434,23 @@ const Manage = () => {
               />
             </div>
             <br />
-            <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-            <button type="submit" style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>확인</button>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <button
+                type="submit"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "20px",
+                }}
+              >
+                확인
+              </button>
             </div>
           </form>
         </Modal>

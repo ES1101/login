@@ -12,12 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
-      {/* <div className="main-container"> */}
-      {/* <Sidebars /> */}
-      {/* <div className="main-content"> */}
       <App />
-      {/* </div> */}
-      {/* </div> */}
     </Router>
   </React.StrictMode>
 );

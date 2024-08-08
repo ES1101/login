@@ -14,7 +14,7 @@
   transform: translate(-50%, -50%);
   background-color: white;
   width: 500px;
-  height: 700px;
+  height: 562px;
   padding: 20px;
   box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
@@ -55,14 +55,15 @@
 
 .modal-contents form button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #578f6e;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-family: "GowunBatang-Regular";
+  margin-bottom: 5px;
 }
 
 .modal-contents form button:hover {
-  background-color: #45a049;
+  background-color: #40a76a;
 }
