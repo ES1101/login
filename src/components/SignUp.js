@@ -18,7 +18,7 @@ const SignUp = () => {
   const validatePassword = (value) =>
     /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(value); // 최소 8자, 하나 이상의 문자와 하나의 숫자
   const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); // 간단한 이메일 형식 확인
-  const validatePhoneNumber = (value) => /^\d{10,11}$/.test(value); // 10~11자의 숫자
+  const validatePhoneNumber = (value) => /^\d{3}-\d{4}-\d{4}$/.test(value); // 000-0000-0000 형식
   const validateName = (value) => value.length > 0; // 이름은 공백이 아니어야 함
 
   const handleUserIdChange = (e) => {
@@ -57,7 +57,7 @@ const SignUp = () => {
       ...prevErrors,
       phoneNumber: validatePhoneNumber(value)
         ? ""
-        : "전화번호는 10~11자의 숫자여야 합니다.",
+        : "전화번호는 000-0000-0000 형식이어야 합니다.",
     }));
   };
 

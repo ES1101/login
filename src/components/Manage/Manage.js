@@ -146,7 +146,6 @@ const Manage = () => {
           className="dropdown"
           onChange={handleItemsPerPageChange}
           value={itemsPerPage}
-          style={{ marginLeft: "20px", padding: "5px" }}
         >
           <option value={10}>10개씩 보기</option>
           <option value={20}>20개씩 보기</option>
@@ -194,7 +193,10 @@ const Manage = () => {
       {isModal && (
         <Modal onClose={toggleModal}>
           <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-            <div style={{ marginBottom: "10px", marginLeft: "5%" }}>
+            <div
+              className="ModalDiv"
+              style={{ marginBottom: "10px", marginLeft: "5%" }}
+            >
               <label>ID: </label>
               <input
                 type="text"

@@ -12,9 +12,13 @@ body {
   font-family: "GowunBatang-Regular", sans-serif;
 }
 
+.ModalDiv {
+  magin-bottom: 10px;
+  margin-left: 5%;
+}
+
 .Manage {
   /* text-align: center; */
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,6 +36,11 @@ body {
   top: 30px;
   display: flex;
   width: auto;
+
+  && select {
+    margin-left: 20px;
+    padding: 5px;
+  }
 }
 
 .Table {
@@ -135,5 +144,6 @@ body {
     align-items: center;
     line-height: 10px;
     width: 20px;
+    border: solid 1px #cdcdcd;
   }
 }

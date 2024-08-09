@@ -23,6 +23,10 @@
 
 .modal-content {
   position: relative;
+
+  && form {
+    /* width: 100%; */
+  }
 }
 
 .close-button {
